@@ -1,5 +1,5 @@
 from django.contrib.auth.views import PasswordResetView
-from django.urls import path
+from django.urls import path, re_path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -19,5 +19,7 @@ urlpatterns = [
     path('api/user/account/refresh_token/',  RefreshTokenView.as_view() ),
     path('api/user/account/get_user_info/', GetUserInfoView.as_view() ),
     path('',index),
+
+    re_path(r'^(?!media/|static/|assets/).*$', index)  #兜底路由，其他的都不匹配就用这个
 ]
 
