@@ -32,7 +32,7 @@ class UpdateProfileView(APIView):
                 })
 
             if photo:
-                remove_old_photo(user_profile)
+                remove_old_photo(user_profile.photo)
                 user_profile.photo = photo
 
             user_profile.profile = profile
@@ -43,7 +43,8 @@ class UpdateProfileView(APIView):
             return Response({
                 'result': 'success',
                 'user_id': user.id,
-                'username': user_profile.profile,
+                'username': user.username,
+                'profile': user_profile.profile,
                 'photo': user_profile.photo.url,
             })
 
