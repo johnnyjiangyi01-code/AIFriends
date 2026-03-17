@@ -1,0 +1,18 @@
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+from web.models.character import Character
+
+
+class RemoveCharacter(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        try:
+            character_id = request.data['character_id']
+            Character.objects.filter(pk=character_id ,author__user = request.user).delete()
+        except:
+            return Response({
+                'result':'系统异常请稍后重试'
+            })
