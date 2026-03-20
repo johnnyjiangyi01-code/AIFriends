@@ -1,5 +1,4 @@
-from django.template.context_processors import request
-from rest_framework import status
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,6 +11,7 @@ class CreateCharacter(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request):
         try:
+
             user = request.user
             user_profile = UserProfile.objects.get(user=user)
             name = request.data.get('name').strip()
