@@ -6,6 +6,7 @@ from rest_framework_simplejwt.views import (
 )
 
 from web.views.create.character.create import CreateCharacter
+from web.views.create.character.get_list import  GetListCharacterView
 from web.views.create.character.get_single import GetSingleCharacterView
 from web.views.create.character.remove import RemoveCharacter
 from web.views.create.character.update import UpdateCharacter
@@ -30,6 +31,7 @@ urlpatterns = [
     path('api/create/character/update/', UpdateCharacter.as_view() ),
     path('api/create/character/remove/', RemoveCharacter.as_view() ),
     path('api/create/character/get_single/', GetSingleCharacterView.as_view() ),
+    path('api/create/character/get_list/', GetListCharacterView.as_view() ),
     path('',index),
 
     re_path(r'^(?!media/|static/|assets/).*$', index)  #兜底路由，其他的都不匹配就用这个
