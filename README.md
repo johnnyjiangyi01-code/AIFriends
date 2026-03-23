@@ -1,1 +1,1 @@
-## A great beginning! 一小时三十五
+## A great beginning! 
