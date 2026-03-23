@@ -14,6 +14,7 @@ let croppie = null
 
 async function openModal(photo) {
   modalRef.value.showModal()
+  await nextTick()
 
   if(! croppie) {
     croppie = new Croppie(croppieRef.value, {
