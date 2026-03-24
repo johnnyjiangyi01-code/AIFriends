@@ -13,7 +13,7 @@ class GetOrCreateFriendView(APIView):
             character_id = request.data['character_id']
             user = request.user
             user_profile = UserProfile.objects.get(user=user)
-            friends = Friend.objects.get(character_id=character_id, me = user_profile)
+            friends = Friend.objects.filter(character_id=character_id, me = user_profile)
             if friends.exists():
                 friend = friends.first()
             else:
