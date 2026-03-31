@@ -1,5 +1,5 @@
 import os
-from pprint import pprint
+
 
 import lancedb
 from django.utils.timezone import now, localtime
@@ -62,7 +62,7 @@ class ChatGraph:
             messages: Annotated[Sequence[BaseMessage], add_messages]
 
         def model_call(state: AgentState) -> AgentState:
-            pprint(state['messages'])
+
             res = llm.invoke(state['messages'])
             return {'messages': [res]}
 
