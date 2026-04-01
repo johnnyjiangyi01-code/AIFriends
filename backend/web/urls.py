@@ -5,6 +5,7 @@ from web.views.create.character.get_list import  GetListCharacterView
 from web.views.create.character.get_single import GetSingleCharacterView
 from web.views.create.character.remove import RemoveCharacter
 from web.views.create.character.update import UpdateCharacter
+from web.views.friend.asr.asr import ASRView
 from web.views.friend.get_list import GetListFriendView
 from web.views.friend.get_or_create import GetOrCreateFriendView
 from web.views.friend.message.chat.chat import MessageChatView
@@ -46,6 +47,8 @@ urlpatterns = [
     path('api/friend/message/chat/',MessageChatView.as_view() ),
 
     path('api/friend/get_history/',GetHistoryView.as_view() ),
+
+    path('api/friend/message/asr/asr/',ASRView.as_view() ),
     path('',index),
 
     re_path(r'^(?!media/|static/|assets/).*$', index)  #兜底路由，其他的都不匹配就用这个
