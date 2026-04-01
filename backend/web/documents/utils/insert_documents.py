@@ -11,7 +11,7 @@ def insert_documents():
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     texts = text_splitter.split_documents(documents)
-    print(f"已切分成 {len(texts)} 个片段。")
+
 
     embeddings = CustomEmbeddings()
     db = lancedb.connect('./web/documents/lancedb_storage')
@@ -22,4 +22,4 @@ def insert_documents():
         table_name='my_knowledge_base',
         mode='overwrite',
     )
-    print(f"已插入 {vector_db._table.count_rows()} 行数据。")
+
